@@ -51,25 +51,26 @@ age_model <- function(times, state, parameters){
        {
         
          # Population per group
-         N1 <- S1+I1+R1
-         N2 <- S2+I2+R2 
+         N1 <- 
+         N2 <-  
          
          # Calculate the transmission rate
-         beta_11 <- b*c_11
-         beta_12 <- b*c_12
-         beta_21 <- b*c_21
-         beta_22 <- b*c_22
+         beta_11 <-
+         beta_12 <- 
+         beta_21 <- 
+         beta_22 <- 
          
          # Differential equations
-         dS1 <- -(beta_11*I1/N1 + beta_12*I2/N2)*S1 + mu*N1 - mu*S1
-         dI1 <-  (beta_11*I1/N1 + beta_12*I2/N2)*S1 - nu*I1 - mu*I1
-         dR1 <-  nu*I1 - mu*R1
+         dS1 <- 
+         dI1 <-  
+         dR1 <-  
          
-         dS2 <- -(beta_21*I1/N1 + beta_22*I2/N2)*S2 + mu*N2 - mu*S2
-         dI2 <-  (beta_21*I1/N2 + beta_22*I2/N2)*S2 - nu*I2 - mu*I2
-         dR2 <-  nu*I2 - mu*R2
+         dS2 <- 
+         dI2 <- 
+         dR2 <-  
          
-         return(list(c(dS1, dI1, dR1, dS2, dI2, dR2)))     #output
+         #output
+             
        })
 }
 
