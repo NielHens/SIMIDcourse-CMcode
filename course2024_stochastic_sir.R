@@ -98,7 +98,7 @@ SIR_runs <- function(gamma,R0){
   out <- NULL
   
   for (i in 1:nruns){
-    out <- c(out,last(SIR(S = 999, I = 1, R = 0, b, gamma)$Rvec))
+    out <- c(out,last(stocSIR_binom(S = 999, I = 1, R = 0, b, gamma)$Rvec))
   }
   
   #out
