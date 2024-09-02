@@ -90,21 +90,21 @@ stocSIR_binom <- function(S, I, R, beta, gamma){
 # SIR_runs for different values of gamma and R0
 last <- function(x) { return( x[length(x)] ) }
 
-SIR_runs <- function(gamma, R0, nruns = 10, S, I, R){
-  
+SIR_runs <- function(gamma,R0){
   # Transmission rate
-  beta <- g*R0/N0/gamma 
+  b <- g*R0/N0/gamma  
   
-  out <- NULL
+  nruns=1000
+  out=NULL
+  
   for (i in 1:nruns){
-    out <- c(out, last(stocSIR_binom(S = S, I = I, R = R, beta, gamma)$Rvec))
+    out <- c(out,last(SIR(S = 999, I = 1, R = 0, b, gamma)$Rvec))
   }
   
-  # output
-  plot(cumsum(out < 200)/c(1:nruns),
-       type = "l", ylab = "prob", xlab = "runs", ylim = c(0,1))
-  title(mean(out < 200))
-  return(mean(out < 200))
+  #out
+  plot(cumsum(out<200)/c(1:nruns), type="l", ylab="prob", xlab="runs", ylim=c(0,1))
+  title(mean(out<200))
+  return(list(extinction_prob = mean(out<200), final_size = out))
 }
 
 
@@ -114,8 +114,7 @@ gamma_grid <- rep(seq(0.80, 1, 0.01), 61)
 R0_grid <- sort(rep(seq(1.0, 4.0, 0.05), 21))
 sets <- cbind(gamma.grid, R0.grid)
 
-tmp <- function(vec){SIR_runs(gamma = vec[1], R0 = vec[2], nruns = 10000,
-                              S = 999, I = 1, R = 0)}
+tmp <- function(vec){SIR_runs(gamma = vec[1], R0 = vec[2])}
 tmp_out <- apply(sets, 1, tmp)
 
 # Plot the results
