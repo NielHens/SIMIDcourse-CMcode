@@ -112,7 +112,7 @@ SIR_runs <- function(gamma,R0){
 # Evaluations
 gamma_grid <- rep(seq(0.80, 1, 0.01), 61)
 R0_grid <- sort(rep(seq(1.0, 4.0, 0.05), 21))
-sets <- cbind(gamma.grid, R0.grid)
+sets <- cbind(gamma_grid, R0_grid)
 
 tmp <- function(vec){SIR_runs(gamma = vec[1], R0 = vec[2])}
 tmp_out <- apply(sets, 1, tmp)
