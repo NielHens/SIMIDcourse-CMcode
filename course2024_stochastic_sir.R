@@ -94,8 +94,8 @@ SIR_runs <- function(gamma,R0){
   # Transmission rate
   b <- g*R0/N0/gamma  
   
-  nruns=1000
-  out=NULL
+  nruns <- 1000
+  out <- NULL
   
   for (i in 1:nruns){
     out <- c(out,last(SIR(S = 999, I = 1, R = 0, b, gamma)$Rvec))
