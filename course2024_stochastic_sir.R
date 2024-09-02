@@ -92,7 +92,7 @@ last <- function(x) { return( x[length(x)] ) }
 
 SIR_runs <- function(gamma,R0){
   # Transmission rate
-  b <- g*R0/N0/gamma  
+  b <- nu*R0/N0/gamma  
   
   nruns <- 1000
   out <- NULL
